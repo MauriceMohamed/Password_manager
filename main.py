@@ -84,6 +84,20 @@ def search():
             else:
                 messagebox.showerror(title= "Error", message="Data not found")
 
+# ----------------------------- Pawword to open app ---------------------------- #
+#if first time ask password
+def check_password():
+    mdp = "0407"
+    #loop to ask password
+    while True:
+        if entry.get() == mdp:
+            intro_password.destroy()
+        else:
+            messagebox.showerror(title= "Error", message="Wrong password")
+            break
+       
+
+
 
     
 
@@ -92,6 +106,25 @@ def search():
 from tkinter import *
 from PIL import Image,ImageTk
 import random
+
+#open window that ask password
+intro_password = Tk()
+intro_password.title("Password")
+intro_password.config(padx=50, pady=50)
+
+label = Label(text="Password")
+label.grid(row=0, column=0)
+#entry
+entry = Entry(intro_password, width=30)
+entry.grid(row=0, column=1)
+#button
+button = Button(text="OK", command=check_password)
+button.grid(row=1, column=1)
+
+intro_password.mainloop()
+
+
+
 root = Tk()
 root.title("Password Generator")
 root.config(padx=50, pady=50)
